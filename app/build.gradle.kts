@@ -63,6 +63,9 @@ android {
 }
 
 dependencies {
+  // Socle commun Kotlin Multiplatform (domaine, données, ViewModel, ressources)
+  implementation(project(":shared"))
+
   // Compose BOM & UI
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.activity.compose)
