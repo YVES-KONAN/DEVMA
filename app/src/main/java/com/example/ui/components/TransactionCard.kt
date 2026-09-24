@@ -30,11 +30,10 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.R
+import com.example.shared.resources.*
 import com.example.model.Transaction
 import com.example.ui.theme.DarkCardBadge
 import com.example.ui.theme.DarkOutline
@@ -44,6 +43,8 @@ import java.text.NumberFormat
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
+import org.jetbrains.compose.resources.stringResource
+import com.example.ui.resources.label
 
 /**
  * Composant atomique réutilisable pour afficher chaque dépense.
@@ -61,10 +62,10 @@ fun TransactionCard(
     onDelete: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val categoryName = stringResource(transaction.category.labelResId)
-    val todayText = stringResource(R.string.date_today)
-    val yesterdayText = stringResource(R.string.date_yesterday)
-    val currencyFcfa = stringResource(R.string.currency_fcfa)
+    val categoryName = stringResource(transaction.category.label)
+    val todayText = stringResource(Res.string.date_today)
+    val yesterdayText = stringResource(Res.string.date_yesterday)
+    val currencyFcfa = stringResource(Res.string.currency_fcfa)
 
     val formattedDate = remember(transaction.date, todayText, yesterdayText) {
         formatRelativeDate(transaction.date, todayText, yesterdayText)
@@ -127,7 +128,7 @@ fun TransactionCard(
                     Spacer(modifier = Modifier.width(4.dp))
                     Icon(
                         imageVector = Icons.Default.Edit,
-                        contentDescription = stringResource(R.string.content_desc_edit),
+                        contentDescription = stringResource(Res.string.content_desc_edit),
                         tint = DarkTextSecondary.copy(alpha = 0.5f),
                         modifier = Modifier.size(13.dp)
                     )
@@ -167,7 +168,7 @@ fun TransactionCard(
                 ) {
                     Icon(
                         imageVector = Icons.Default.Delete,
-                        contentDescription = stringResource(R.string.content_desc_delete_format, transaction.title),
+                        contentDescription = stringResource(Res.string.content_desc_delete_format, transaction.title),
                         tint = DarkTextSecondary,
                         modifier = Modifier.size(20.dp)
                     )

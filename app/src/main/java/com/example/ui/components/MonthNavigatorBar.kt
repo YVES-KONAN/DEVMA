@@ -27,15 +27,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.testTag
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.R
+import com.example.shared.resources.*
 import com.example.model.YearMonth
 import com.example.ui.theme.DarkOutline
 import com.example.ui.theme.DarkSurfaceVariant
 import com.example.ui.theme.VioletPrimary
+import org.jetbrains.compose.resources.stringResource
+import com.example.ui.resources.displayLabel
 
 /**
  * Navigateur mensuel élégant permettant de passer d'un mois à l'autre (◀ Mois Année ▶).
@@ -81,7 +82,7 @@ fun MonthNavigatorBar(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowLeft,
-                    contentDescription = stringResource(R.string.nav_prev_month),
+                    contentDescription = stringResource(Res.string.nav_prev_month),
                     tint = Color.White,
                     modifier = Modifier.size(24.dp)
                 )
@@ -102,7 +103,7 @@ fun MonthNavigatorBar(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = currentMonth.displayLabel,
+                    text = currentMonth.displayLabel(),
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Bold
@@ -119,7 +120,7 @@ fun MonthNavigatorBar(
                             .padding(horizontal = 6.dp, vertical = 2.dp)
                     ) {
                         Text(
-                            text = stringResource(R.string.current_month_badge),
+                            text = stringResource(Res.string.current_month_badge),
                             style = MaterialTheme.typography.labelSmall.copy(
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.Bold
@@ -140,7 +141,7 @@ fun MonthNavigatorBar(
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.KeyboardArrowRight,
-                    contentDescription = stringResource(R.string.nav_next_month),
+                    contentDescription = stringResource(Res.string.nav_next_month),
                     tint = Color.White,
                     modifier = Modifier.size(24.dp)
                 )
